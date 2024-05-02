@@ -1,0 +1,19 @@
+{
+  "name": "typescript-srcml",
+  "version": "0.0.0",
+  "author": "Rozelin <rozelin.dc@gmail.com> (https://github.com/Rozelin-dc)",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rozelin-dc/typescript-srcML.git"
+  },
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}

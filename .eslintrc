@@ -1,0 +1,58 @@
+{
+  "rules": {
+    "no-console": "off",
+    "no-unused-vars": "off",
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "semi": "off",
+    "no-case-declarations": "off",
+    "prefer-spread": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "none"
+      }
+    ],
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "types": {
+          "{}": false,
+          "Object": false,
+          "Function": false
+        },
+        "extendDefaults": true
+      }
+    ],
+    "@typescript-eslint/ban-ts-comment": "off",
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ],
+        "newlines-between": "always",
+        "pathGroupsExcludedImportTypes": ["builtin", "type"],
+        "alphabetize": { "order": "asc", "caseInsensitive": true }
+      }
+    ]
+  },
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "plugins": ["import", "@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2016
+  },
+  "env": {
+    "node": true
+  }
+}

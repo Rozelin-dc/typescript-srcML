@@ -1,7 +1,7 @@
 import * as ts from 'typescript'
 
 import { getFileFromCommandOption } from './command'
-import { convertAstToXml } from './match'
+import { astToXmlWithSpace, convertAstToXml } from './match'
 
 const createSrcMl = async () => {
   try {
@@ -9,12 +9,19 @@ const createSrcMl = async () => {
     const sourceFile = ts.createSourceFile(
       fileName,
       code,
-      ts.ScriptTarget.ES2015,
-      /*setParentNodes */ true
+      {
+        languageVersion: ts.ScriptTarget.ES2016,
+        jsDocParsingMode: ts.JSDocParsingMode.ParseNone,
+      },
+      true,
+      ts.ScriptKind.TS
     )
-    const xml = convertAstToXml(sourceFile)
 
-    console.log(xml.end({ prettyPrint: true }))
+    // const xml = convertAstToXml(sourceFile)
+    // console.log(xml.end({ prettyPrint: true }))
+
+    const xmlStr = astToXmlWithSpace(sourceFile, code)
+    console.log(xmlStr)
   } catch (e) {
     console.error(e)
   }

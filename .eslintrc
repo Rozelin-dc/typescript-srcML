@@ -3,7 +3,7 @@
     "no-console": "off",
     "no-unused-vars": "off",
     "indent": ["error", 2, { "SwitchCase": 1 }],
-    "semi": "off",
+    "semi": ["error", "never"],
     "no-case-declarations": "off",
     "prefer-spread": "off",
     "@typescript-eslint/no-unused-vars": [

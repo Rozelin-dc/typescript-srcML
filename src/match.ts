@@ -77,6 +77,7 @@ export const astToXmlWithSpace = (sourceFile: ts.SourceFile, code: string) => {
     }
 
     if (beginComment) {
+      // コメントが閉じていない
       throw new Error('Invalid comment')
     }
   }
@@ -101,13 +102,16 @@ export const astToXmlWithSpace = (sourceFile: ts.SourceFile, code: string) => {
     const nextNodeIndex =
       parentChildren.findIndex((child) => child.pos === node.pos) + 1
     if (nextNodeIndex === 0 || nextNodeIndex >= parentChildren.length) {
+      // 兄弟の中で最後のノードなら何もしない
       return
     }
     const nextNode = parentChildren[nextNodeIndex]
-    if (node.pos >= nextNode.pos) {
-      return
+    if (node.pos > nextNode.pos) {
+      // ここには到達しないはず(次のノードの方が現在のノードより前に存在することはあり得ない)
+      throw new Error('Invalid node position')
     }
 
+    // 現在のノードと次のノードの間のスペースを挿入
     const { line: nodeLine, character: nodeChar } =
       sourceFile.getLineAndCharacterOfPosition(node.getEnd())
     const { line: nextNodeLine, character: nextNodeChar } =

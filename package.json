@@ -11,8 +11,7 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "lint": "eslint \"src/**/*.ts\"",
-    "type-check": "tsc --noEmit",
-    "test": "jest"
+    "type-check": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/yargs": "^17.0.32",
